@@ -1,5 +1,7 @@
 package com.wa7a.kotlinchallenge1.ui.viewmodel
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.wa7a.kotlinchallenge1.api.RetrofitInstance
@@ -8,10 +10,14 @@ import kotlinx.coroutines.launch
 
 class MainViewModel : ViewModel() {
 
-    val medalsData = mutableListOf<Data>()
+    val _medalsData = MutableLiveData<List<Data>>()
+    val medalsData: LiveData<List<Data>>
+        get() = _medalsData
 
     fun getMedals() = viewModelScope.launch {
-        medalsData.addAll(RetrofitInstance.api.getMedals().data)
+        val fetchedMedals = RetrofitInstance.api.getMedals().data
+        _medalsData.value = fetchedMedals
+
     }
 
 

@@ -33,11 +33,11 @@ class MainAdapter(var data: List<Data>) :
         holder.apply {
             titleTextView.text = currentData.title
             labelTextView.text = currentData.label
-            val childLayoutManager =
-                GridLayoutManager(childRecyclerView.context,2)
-            childLayoutManager.initialPrefetchItemCount = currentData.records.size
+//            val childLayoutManager =
+//                GridLayoutManager(childRecyclerView.context,2)
+//            childLayoutManager.initialPrefetchItemCount = currentData.records.size
             childRecyclerView.apply {
-                layoutManager = childLayoutManager
+//                layoutManager = childLayoutManager
                 adapter = MedalAdapter(currentData.records)
 //                setRecycledViewPool(RecyclerView.RecycledViewPool())
             }
