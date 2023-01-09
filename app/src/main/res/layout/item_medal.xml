@@ -29,12 +29,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-
             android:autoSizeMaxTextSize="20sp"
             android:autoSizeMinTextSize="9sp"
             android:autoSizeStepGranularity="2sp"
+            android:textColor="#000000"
             android:autoSizeTextType="uniform"
             android:gravity="center"
+            android:textSize="12dp"
             android:maxLines="1"
             tools:text="Title" />
 
@@ -43,7 +44,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-
+            android:textColor="#666666"
+            android:textSize="12dp"
             android:autoSizeMaxTextSize="20sp"
             android:autoSizeMinTextSize="9sp"
             android:autoSizeStepGranularity="2sp"
