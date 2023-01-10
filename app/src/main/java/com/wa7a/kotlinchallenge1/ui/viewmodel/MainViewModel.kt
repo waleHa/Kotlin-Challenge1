@@ -15,11 +15,6 @@ class MainViewModel : ViewModel() {
         get() = _medalsData
 
     fun getMedals() = viewModelScope.launch {
-        val fetchedMedals = RetrofitInstance.api.getMedals().data
-        _medalsData.value = fetchedMedals
-
+        _medalsData.value = RetrofitInstance.api.getMedals().data
     }
-
-
-
 }

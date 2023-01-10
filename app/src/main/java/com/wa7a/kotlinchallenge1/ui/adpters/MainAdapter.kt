@@ -4,12 +4,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.wa7a.kotlinchallenge1.R
 import com.wa7a.kotlinchallenge1.data.Data
-import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.item_main.view.*
 
 class MainAdapter(var data: List<Data>) :
@@ -19,7 +16,6 @@ class MainAdapter(var data: List<Data>) :
         parent: ViewGroup,
         viewType: Int
     ): MainViewHolder {
-
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_main, parent, false)
         return MainViewHolder(view)
     }
@@ -45,8 +41,8 @@ class MainAdapter(var data: List<Data>) :
         }
     }
 
-    inner class MainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        val childRecyclerView : RecyclerView = itemView.recycler_view_child
+    inner class MainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val childRecyclerView: RecyclerView = itemView.recycler_view_child
         val titleTextView: TextView = itemView.text_view_title
         val labelTextView: TextView = itemView.text_view_label
     }

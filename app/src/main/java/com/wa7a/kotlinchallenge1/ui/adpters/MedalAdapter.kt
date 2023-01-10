@@ -26,8 +26,6 @@ class MedalAdapter(var records: List<Record>) :
         holder.itemView.apply {
 
             if (records[position].active) {
-
-                //            image_view
                 Glide.with(this)
                     .load(records[position].image)
                     .into(image_view)
