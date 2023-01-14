@@ -5,41 +5,43 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
-import com.wa7a.kotlinchallenge1.R
 import com.wa7a.kotlinchallenge1.data.Data
-import com.wa7a.kotlinchallenge1.ui.adpters.MainAdapter
+import com.wa7a.kotlinchallenge1.data.Medal
+import com.wa7a.kotlinchallenge1.ui.adpters.DataAdapter
 import com.wa7a.kotlinchallenge1.ui.viewmodel.MainViewModel
-import kotlinx.android.synthetic.main.activity_main.*
+import com.wa7a.kotlinchallenge1.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     private val TAG: String = "MainActivity Report"
     lateinit var viewModel: MainViewModel
-    lateinit var mainAdapter: MainAdapter
+    lateinit var mainAdapter: DataAdapter
     lateinit var recyclerView: RecyclerView
 
-    private val dataX = mutableListOf<Data>()
+//    private val dataX = Medal()
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding= ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        //TODO:CHANGE
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+
         viewModel.getMedals()
-        setupRecyclerView(dataX)
+
+        setupRecyclerView()
     }
 
-    private fun setupRecyclerView(data: List<Data>) {
-        recyclerView = recycler_view_parent
+    private fun setupRecyclerView() {
 
-        mainAdapter = MainAdapter(data)
-        recyclerView.apply {
+        recyclerView = binding.recyclerViewParent
+        mainAdapter = DataAdapter()
+        recyclerView.adapter = mainAdapter
 
-            adapter = mainAdapter
-
-        }
-        viewModel.medalsData.observe(this, Observer { data ->
-            dataX.addAll(data)
-            mainAdapter.notifyDataSetChanged()
+        viewModel.medalsData.observe(this, Observer { medal ->
+            binding.medal = medal
         })
     }
 }

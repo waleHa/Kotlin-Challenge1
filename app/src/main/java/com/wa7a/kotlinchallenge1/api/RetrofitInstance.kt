@@ -4,6 +4,7 @@ import com.wa7a.kotlinchallenge1.utils.Constants.Companion.BASE_URL
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+//Network Module
 class RetrofitInstance {
     companion object {
         private val retrofit by lazy {
