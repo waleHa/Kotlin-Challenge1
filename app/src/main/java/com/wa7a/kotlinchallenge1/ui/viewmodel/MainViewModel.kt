@@ -4,17 +4,21 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.wa7a.kotlinchallenge1.api.RetrofitInstance
-import com.wa7a.kotlinchallenge1.data.Data
+import com.wa7a.kotlinchallenge1.repository.MedalRepository
 import com.wa7a.kotlinchallenge1.data.Medal
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MainViewModel : ViewModel() {
+@HiltViewModel
+class MainViewModel @Inject constructor(private val repository: MedalRepository): ViewModel() {
     val _medalsData = MutableLiveData<Medal>()
     val medalsData: LiveData<Medal>
         get() = _medalsData
 
     fun getMedals() = viewModelScope.launch {
-        _medalsData.value = RetrofitInstance.api.getMedals()
+         repository.getMedal(_medalsData)
+    //_medalsData.value = AppModule.provideApi().getMedals()
+//            RetrofitInstance.api.getMedals()
     }
 }
