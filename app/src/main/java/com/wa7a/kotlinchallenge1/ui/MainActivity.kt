@@ -18,8 +18,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var viewModel: MainViewModel
     lateinit var mainAdapter: DataAdapter
     lateinit var recyclerView: RecyclerView
-
-    //    private val dataX = Medal()
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,8 +27,6 @@ class MainActivity : AppCompatActivity() {
 
         //TODO:CHANGE
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-
-//        viewModel.getMedals()
 
         setupRecyclerView()
     }

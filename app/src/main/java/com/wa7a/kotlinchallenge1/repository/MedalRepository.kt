@@ -14,7 +14,7 @@ class MedalRepository @Inject constructor(private val medalAPI: MedalAPI) {
     suspend fun getMedal(mutableLiveData: MutableLiveData<Medal>) {
         val call: Call<Medal> = medalAPI.getMedals()
 
-        call.enqueue(object : Callback<Medal>{
+        call.enqueue(object : Callback<Medal> {
             override fun onFailure(call: Call<Medal>, t: Throwable) {
                 mutableLiveData.postValue(null)
             }
@@ -24,5 +24,4 @@ class MedalRepository @Inject constructor(private val medalAPI: MedalAPI) {
             }
         })
     }
-//        AppModule.provideApi().getMedals()
 }

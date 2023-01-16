@@ -9,11 +9,11 @@ import com.wa7a.kotlinchallenge1.databinding.ItemDataBinding
 class DataAdapter() :
     RecyclerView.Adapter<DataAdapter.MainViewHolder>() {
     private val viewPool = RecyclerView.RecycledViewPool()
-    private var data = mutableListOf <Data>()
+    private var data = mutableListOf<Data>()
     lateinit var recyclerView: RecyclerView
     lateinit var medalAdapter: RecordAdapter
 
-    fun setContentList(data:MutableList<Data>){
+    fun setContentList(data: MutableList<Data>) {
         this.data = data
         notifyDataSetChanged()
     }
@@ -22,11 +22,6 @@ class DataAdapter() :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Data) {
             binding.data = item
-
-//            binding.data?.records = item.records
-//            recyclerView = binding.recyclerViewChild
-//            medalAdapter = MedalAdapter(item.records)
-//            recyclerView.adapter = medalAdapter
         }
     }
 
